@@ -2,6 +2,7 @@ import db from "./db";
 import User from "./User";
 
 const seed = async () => {
+  console.log("BEGINNING SEED");
   await db.sync({ force: true });
 
   const [moe, lucy, larry, ethyl] = await Promise.all([
@@ -10,6 +11,7 @@ const seed = async () => {
     User.create({ username: "larry", password: "123" }),
     User.create({ username: "ethyl", password: "123" }),
   ]);
+  console.log("SEED COMPLETE");
 
   return {
     users: {
