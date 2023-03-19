@@ -36,3 +36,9 @@
 ## Tier 3
 - A user should be able to interact with other users stories.
   - Comment/like other users stories.
+  
+# Database Schemas
+## V1![drawSQL-cat-social-export-2023-03-19](https://user-images.githubusercontent.com/79232977/226156711-8004162d-6b4f-4394-bb6c-2d04c2926c7b.png)
+
+
+
