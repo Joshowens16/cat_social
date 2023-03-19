@@ -19,6 +19,17 @@ model User {
   lastName  String
   posts     Post[]
   comments  Comments[]
+  cats      Cats[]
+}
+
+model Cats {
+  id     String  @id @default(cuid())
+  name   String
+  breed  String
+  color  String
+  gender String
+  User   User?   @relation(fields: [userId], references: [id])
+  userId String?
 }
 
 model Post {
@@ -28,6 +39,13 @@ model Post {
   author    User       @relation(fields: [authorId], references: [id])
   authorId  String
   comments  Comments[]
+  likes     Likes[]
+}
+
+model Likes {
+  id     Int   @id @default(autoincrement())
+  Post   Post? @relation(fields: [postId], references: [id])
+  postId Int?
 }
 
 model Comments {
