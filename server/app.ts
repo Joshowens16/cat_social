@@ -1,14 +1,14 @@
 import express, { Express, Request, Response } from "express";
 import path from "path";
 import morgan from "morgan";
-import apiRouter from "./api";
+import apiRouter from "./api/index";
 
 const router: Express = express();
 
 // Set up middleware
 router.use(morgan("tiny"));
 router.use(express.json());
-
+router.use(express.urlencoded({ extended: false }));
 // Set up routes
 router.use("/api", apiRouter);
 

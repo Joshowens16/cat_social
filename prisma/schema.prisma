@@ -36,8 +36,8 @@ model Post {
   id        Int        @id @default(autoincrement())
   content   String?
   published Boolean    @default(false)
-  author    User       @relation(fields: [authorId], references: [id])
-  authorId  String
+  author    User?      @relation(fields: [authorId], references: [id])
+  authorId  String?
   comments  Comments[]
   likes     Likes[]
 }
@@ -50,8 +50,8 @@ model Likes {
 
 model Comments {
   id       Int    @id @default(autoincrement())
-  author   User   @relation(fields: [authorId], references: [id])
+  author   User?  @relation(fields: [authorId], references: [id])
   authorId String
-  post     Post   @relation(fields: [postId], references: [id])
+  post     Post?  @relation(fields: [postId], references: [id])
   postId   Int
 }
