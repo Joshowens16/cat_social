@@ -40,5 +40,9 @@
 # Database Schemas
 ## V1![drawSQL-cat-social-export-2023-03-19](https://user-images.githubusercontent.com/79232977/226156711-8004162d-6b4f-4394-bb6c-2d04c2926c7b.png)
 
+# Project Process:
+Tier 1: API/DATABASE
+- [x] API can now interact with local and deployed database to create new users
+- [ ]  Authenticate users and hash/encrpt sensitive user information (primarily user password)
 
 
