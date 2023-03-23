@@ -35,6 +35,8 @@
     "morgan": "^1.10.0",
     "pg": "^8.8.0",
     "sequelize": "^6.25.3",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-react": "^5.0.0",
     "uuid": "^9.0.0",
     "volleyball": "^1.5.1"
   },
