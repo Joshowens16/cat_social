@@ -10,7 +10,6 @@ import prisma from "../../prisma/client";
 const router = express.Router();
 router.get("/", async (req: Request, res: Response, next: NextFunction) => {
   try {
-    console.log("hitting route");
     const users = await prisma.user.findMany();
     res.send(users);
   } catch (error) {
@@ -33,7 +32,6 @@ router.get(
 );
 router.post("/", async (req: Request, res: Response, next: NextFunction) => {
   const userInfo = req.body;
-  console.log(req.body);
   try {
     const newUser = await prisma.user.create({
       data: {

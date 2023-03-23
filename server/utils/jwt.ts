@@ -4,7 +4,7 @@ dotenv.config();
 const JWT_ACCESS = process.env.ACCESS_TOKEN_SECRET;
 const JWT_REFRESH = process.env.JWT_REFRESH_SECRET;
 // Usually I keep the token between 5 minutes - 15 minutes
-export function generateAccessToken(user: { id: any }) {
+export function generateAccessToken(user: { id: string }) {
   if (!JWT_ACCESS) {
     throw new Error("JWT access token is not defined.");
   }
@@ -17,7 +17,7 @@ export function generateAccessToken(user: { id: any }) {
 // But keep him logged in if he is using the app.
 // You can change this value depending on your app logic.
 // I would go for a maximum of 7 days, and make him login again after 7 days of inactivity.
-export function generateRefreshToken(user: { id: any }, jti: any) {
+export function generateRefreshToken(user: { id: string }, jti: string) {
   if (!JWT_REFRESH) {
     throw new Error("JWT refresh token is not defined.");
   }
@@ -33,7 +33,7 @@ export function generateRefreshToken(user: { id: any }, jti: any) {
   );
 }
 
-export function generateTokens(user: any, jti: any) {
+export function generateTokens(user: { id: string }, jti: string) {
   const accessToken = generateAccessToken(user);
   const refreshToken = generateRefreshToken(user, jti);
 

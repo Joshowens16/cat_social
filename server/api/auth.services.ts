@@ -7,8 +7,8 @@ export function addRefreshTokenToWhitelist({
   refreshToken,
   userId,
 }: {
-  jti: any;
-  refreshToken: any;
+  jti: string;
+  refreshToken: string;
   userId: string;
 }) {
   return prisma.refreshToken.create({
