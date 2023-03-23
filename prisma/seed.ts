@@ -1,4 +1,3 @@
-import { Password } from "@mui/icons-material";
 import prisma from "./client";
 
 async function main() {

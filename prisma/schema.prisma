@@ -11,15 +11,16 @@ datasource db {
 }
 
 model User {
-  id        String     @id @default(cuid())
-  username  String
-  password  String
-  email     String     @unique
-  firstName String
-  lastName  String
-  posts     Post[]
-  comments  Comments[]
-  cats      Cats[]
+  id            String         @id @default(cuid())
+  username      String?
+  password      String
+  email         String         @unique
+  firstName     String?
+  lastName      String?
+  posts         Post[]
+  comments      Comments[]
+  cats          Cats[]
+  refreshTokens RefreshToken[]
 }
 
 model Cats {
@@ -54,4 +55,14 @@ model Comments {
   authorId String
   post     Post?  @relation(fields: [postId], references: [id])
   postId   Int
+}
+
+model RefreshToken {
+  id          String   @id @unique @default(uuid())
+  hashedToken String
+  userId      String
+  User        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  revoked     Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
