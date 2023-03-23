@@ -1,5 +1,5 @@
-import prisma from "../../prisma/client";
-import hashToken from "../utils/hashToken";
+import prisma from "../../../prisma/client";
+import hashToken from "../../utils/hashToken";
 
 // used when we create a refresh token.
 export function addRefreshTokenToWhitelist({

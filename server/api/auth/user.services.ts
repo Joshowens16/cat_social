@@ -1,6 +1,6 @@
 import bcrypt from "bcrypt";
-import prisma from "../../prisma/client";
-import { UserInterface } from "../utils/model.interfaces";
+import prisma from "../../../prisma/client";
+import { UserInterface } from "../../utils/model.interfaces";
 export function findUserByEmail(email: string) {
   return prisma.user.findUnique({
     where: {

@@ -1,6 +1,6 @@
 import express from "express";
 import { v4 as uuidv4 } from "uuid";
-import { generateTokens } from "../utils/jwt";
+import { generateTokens } from "../../utils/jwt";
 import { addRefreshTokenToWhitelist } from "./auth.services";
 // const jwt = require('jsonwebtoken');
 
