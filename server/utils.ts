@@ -12,6 +12,7 @@ export async function authenticate(username: string, password: string) {
       username: username,
     },
   });
+  console.log(user);
   if (user && (await bcrypt.compare(password, user.password))) {
     return jwt.sign({ id: user.id }, JWT as Secret);
   }

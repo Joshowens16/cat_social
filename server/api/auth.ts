@@ -1,16 +1,20 @@
 import prisma from "../../prisma/client";
-const User = prisma.user;
-
 import express, { NextFunction, Request, Response } from "express";
+import { authenticate, findByToken } from "../utils";
 const router = express.Router();
+const User = prisma.user;
 
 /**
  * Get user based on token
  */
 router.get("/", async (req: Request, res: Response, next: NextFunction) => {
   try {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    res.send(await (User as any).findByToken(req.headers.authorization));
+    if (!req.headers.authorization) {
+      throw new Error("Invalid authorization");
+    }
+    const user = await findByToken(req.headers.authorization);
+    console.log("get" + user);
+    res.send(user);
   } catch (error) {
     next(error);
   }
@@ -21,8 +25,12 @@ router.get("/", async (req: Request, res: Response, next: NextFunction) => {
  */
 router.post("/", async (req: Request, res: Response, next: NextFunction) => {
   try {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    res.send(await (User as any).authenticate(req.body));
+    if (!req.body) {
+      throw new Error("Invalid parameters");
+    }
+    const data = await authenticate(req.body.username, req.body.password);
+    console.log("post" + data);
+    res.send(data);
   } catch (error) {
     next(error);
   }
