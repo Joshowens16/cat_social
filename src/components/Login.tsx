@@ -19,24 +19,18 @@ const Login = () => {
   };
 
   const loginWithToken = async () => {
-    const token = window.localStorage.getItem("token");
-    if (token) {
-      const response = await axios.get("/api/auth", {
-        headers: {
-          authorization: token,
-        },
-      });
-
-      dispatch(setUser(response.data));
-    }
+    // const token = window.localStorage.getItem("token");
+    // if (token) {
+    const response = await axios.post("/api/auth/login", credentials);
+    dispatch(setUser(response.data.existingUser));
+    // }
   };
 
   const attemptLogin = async (event: React.MouseEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const response = await axios.post("/api/auth", credentials);
-    const token = response.data;
-    window.localStorage.setItem("token", token);
-
+    // const response = await axios.post("/api/auth", credentials);
+    // const token = response.data;
+    // window.localStorage.setItem("token", token);
     loginWithToken();
   };
 
