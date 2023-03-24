@@ -1,3 +1,4 @@
+// IMPORTS
 import express from "express";
 import bcrypt from "bcrypt";
 import { v4 as uuidv4 } from "uuid";
@@ -16,9 +17,13 @@ import {
   findUserById,
 } from "./user.services";
 import * as dotenv from "dotenv";
+// init .env config so we can pull in secrets
 dotenv.config();
+// init Express router
 const router = express.Router();
+// JWT Refresh is our way of reauthenticating users
 const JWT_REFRESH = process.env.JWT_REFRESH_SECRET;
+// POST - '/api/auth/register': route to register a user, gives them a Json Web Token and hashes their password
 router.post("/register", async (req, res, next) => {
   try {
     const { email, password, username, firstName, lastName } = req.body;
