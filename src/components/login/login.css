@@ -25,5 +25,6 @@ form {
 }
 @media screen and (max-width: 640px) {
   .loginContainer {
+    color: blue;
   }
 }
