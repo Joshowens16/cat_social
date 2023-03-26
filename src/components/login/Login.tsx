@@ -42,22 +42,29 @@ const Login = () => {
 
   return (
     <div className="loginContainer">
-      <h2>Login</h2>
-      <form onSubmit={attemptLogin}>
-        <input
-          placeholder="username"
-          value={credentials.username}
-          name="username"
-          onChange={onChange}
-        />
-        <input
-          placeholder="password"
-          name="password"
-          value={credentials.password}
-          onChange={onChange}
-        />
-        <button>Login</button>
-      </form>
+      <div className="loginPortal">
+        <h1>Cat Social</h1>
+        <form onSubmit={attemptLogin}>
+          <input
+            placeholder="username"
+            value={credentials.username}
+            name="username"
+            onChange={onChange}
+          />
+          <input
+            placeholder="password"
+            name="password"
+            value={credentials.password}
+            onChange={onChange}
+          />
+          <button>Log in</button>
+        </form>
+      </div>
+      <div className="createAccount">
+        <p>
+          Don&apos;t have an account? <a href="">Sign up</a>
+        </p>
+      </div>
     </div>
   );
 };

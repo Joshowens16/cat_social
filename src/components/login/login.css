@@ -2,7 +2,14 @@
 /* MOBILE-SM: max-width: 768px  */
 /* TABLET max-width: 1024px  */
 /* DESKTOP: min-width: 1200px  */
-
+@font-face {
+  font-family: logo;
+  src: url("../../fonts/IG_LOGO.ttf");
+}
+@font-face {
+  font-family: igSans;
+  src: url("../../fonts/IG_SANS.ttf");
+}
 .loginContainer {
   display: flex;
   justify-content: center;
@@ -11,18 +18,67 @@
   width: 100%;
   height: 99%;
   overflow-y: hidden;
+  gap: 8px;
+}
+.loginPortal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid black;
+  padding: 20px;
+  border-radius: 1px;
+  border: 1px solid rgb(219, 219, 219);
 }
 
+.loginPortal h1 {
+  font-family: logo;
+  padding: 0;
+  margin: 0;
+  font-size: 48px;
+}
 form {
+  font: igSans;
   display: flex;
   flex-direction: column;
   gap: 10px;
-  border: 1px solid black;
   padding-left: 20px;
   padding-right: 20px;
   padding-top: 40px;
   padding-bottom: 40px;
 }
+form input {
+  background-color: rgb(250, 250, 250);
+  padding: 9px 0 7px 8px;
+  text-overflow: ellipsis;
+  border: 1px solid rgb(219, 219, 219);
+  width: 250px;
+}
+form button {
+  background-color: rgba(103, 181, 250, 255);
+  color: white;
+  border: none;
+  padding: 6px;
+  border-radius: 4px;
+}
+
+.createAccount {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: igSans;
+  border: 1px solid rgb(219, 219, 219);
+  padding: 10px;
+  width: 312px;
+}
+.createAccount p {
+  margin: 0;
+  padding: 0;
+}
+.createAccount a {
+  color: rgba(103, 181, 250, 255);
+  text-decoration: none;
+}
+
 @media screen and (max-width: 640px) {
   .loginContainer {
     color: blue;
