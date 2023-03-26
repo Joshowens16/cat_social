@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { setUser } from "../store/userSlice";
+import { setUser } from "../../store/userSlice";
 import axios from "axios";
-
+import "./login.css";
 const Login = () => {
   const dispatch = useDispatch();
   const [credentials, setCredentials] = useState({
@@ -41,7 +41,7 @@ const Login = () => {
   };
 
   return (
-    <div>
+    <div className="loginContainer">
       <h2>Login</h2>
       <form onSubmit={attemptLogin}>
         <input
