@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { setUser } from "../../store/userSlice";
 import axios from "axios";
 import "./login.css";
+import { Link } from "react-router-dom";
 const Login = () => {
   const dispatch = useDispatch();
   const [credentials, setCredentials] = useState({
@@ -61,9 +62,8 @@ const Login = () => {
         </form>
       </div>
       <div className="createAccount">
-        <p>
-          Don&apos;t have an account? <a href="">Sign up</a>
-        </p>
+        <p>Don&apos;t have an account?</p>
+        <Link to="/signup">Sign Up</Link>
       </div>
     </div>
   );

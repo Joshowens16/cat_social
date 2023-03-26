@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import Home from "./Home";
+import Home from "./home/Home";
 import Login from "./login/Login";
 import { setUser } from "../store/userSlice";
 import { useSelector, useDispatch } from "react-redux";
@@ -7,6 +7,7 @@ import { Link, Routes, Route } from "react-router-dom";
 import axios from "axios";
 import { RootState } from "../store";
 import "./app.css";
+import CreateAccount from "./createAccount/CreateAccount";
 const App = () => {
   const { user } = useSelector((state: RootState) => state.user);
   const dispatch = useDispatch();
@@ -28,20 +29,17 @@ const App = () => {
     loginWithToken();
   }, []);
 
-  if (!user.id) return <Login />;
   return (
-    <div>
-      <h1>Hi, My name is totally Ben!!!!</h1>
-      <h1>My Name is Louis!!</h1>
-      <div>
-        <nav>
-          <Link to="/">Hooooooooome</Link>
-        </nav>
-        <Routes>
+    <>
+      <Routes>
+        {user.id ? (
           <Route path="/" element={<Home />} />
-        </Routes>
-      </div>
-    </div>
+        ) : (
+          <Route path="/" element={<Login />} />
+        )}
+        <Route path="/signup" element={<CreateAccount />} />
+      </Routes>
+    </>
   );
 };
 

@@ -16,9 +16,15 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
-  height: 99%;
+  height: 100%;
   overflow-y: hidden;
   gap: 8px;
+  background-image: url("../../../static/blob.svg");
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 .loginPortal {
   display: flex;
@@ -32,6 +38,7 @@
 
 .loginPortal h1 {
   font-family: logo;
+  user-select: none;
   padding: 0;
   margin: 0;
   font-size: 48px;
@@ -53,6 +60,11 @@ form input {
   border: 1px solid rgb(219, 219, 219);
   width: 250px;
 }
+form input:focus {
+  outline-style: solid;
+  outline-color: rgb(205, 205, 205);
+  outline-width: 1px;
+}
 form button {
   background-color: rgba(103, 181, 250, 255);
   color: white;
@@ -69,6 +81,7 @@ form button {
   border: 1px solid rgb(219, 219, 219);
   padding: 10px;
   width: 312px;
+  gap: 4px;
 }
 .createAccount p {
   margin: 0;
