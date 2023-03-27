@@ -19,7 +19,7 @@
   height: 100%;
   overflow-y: hidden;
   gap: 8px;
-  background-image: url("../../../static/blob.svg");
+  background-image: url("../../../static/signinblob.svg");
   background-repeat: no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -43,7 +43,7 @@
   margin: 0;
   font-size: 48px;
 }
-form {
+.loginPortal form {
   font: igSans;
   display: flex;
   flex-direction: column;
@@ -53,24 +53,32 @@ form {
   padding-top: 40px;
   padding-bottom: 40px;
 }
-form input {
+.loginPortal form input {
   background-color: rgb(250, 250, 250);
   padding: 9px 0 7px 8px;
   text-overflow: ellipsis;
   border: 1px solid rgb(219, 219, 219);
   width: 250px;
 }
-form input:focus {
+.loginPortal form input:focus {
   outline-style: solid;
   outline-color: rgb(205, 205, 205);
   outline-width: 1px;
 }
-form button {
+.loginPortal form button {
   background-color: rgba(103, 181, 250, 255);
+  letter-spacing: 0.1px;
+  font-weight: 900;
   color: white;
   border: none;
   padding: 6px;
   border-radius: 4px;
+}
+.loginPortal form button:hover {
+  outline: solid;
+  outline-width: 1px;
+  outline-color: rgb(219, 219, 219);
+  cursor: pointer;
 }
 
 .createAccount {

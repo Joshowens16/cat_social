@@ -18,5 +18,8 @@ router.use("/static", express.static(path.join(__dirname, "../static")));
 router.get("/", (req: Request, res: Response) =>
   res.sendFile(path.join(__dirname, "../static/index.html"))
 );
+router.use("*", (req: Request, res: Response) => {
+  res.sendFile(path.join(__dirname, "../static/index.html"));
+});
 
 export default router;

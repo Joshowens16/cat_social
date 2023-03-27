@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { resetUser, setUser } from "../../store/userSlice";
 import { RootState } from "../../store";
 import axios from "axios";
-import { Login } from "@mui/icons-material";
 const Home = () => {
   const { user } = useSelector((state: RootState) => state.user);
   const dispatch = useDispatch();

@@ -1,6 +1,9 @@
+import { User } from "@prisma/client";
 import express, { NextFunction, Request, Response } from "express";
 import prisma from "../../prisma/client";
-
+import { UserInterface } from "./api.types";
+import bcrypt from "bcrypt";
+import { generateSalts } from "../utils";
 // User fields:
 // username: string
 // password: string
@@ -33,7 +36,25 @@ router.get(
 router.post("/", async (req: Request, res: Response, next: NextFunction) => {
   const userInfo = req.body;
   try {
-    const newUser = await prisma.user.create({
+    const userWithSameUsername = await prisma.user.findUnique({
+      where: {
+        username: req.body.username,
+      },
+    });
+    const userWithSameEmail = await prisma.user.findUnique({
+      where: {
+        username: req.body.email,
+      },
+    });
+    if (userWithSameUsername) {
+      res.status(404).send("Username unavailable.");
+    }
+    if (userWithSameEmail) {
+      res.status(404).send("Email is already in use.");
+    }
+    const salt: number = await generateSalts();
+    userInfo.password = bcrypt.hashSync(userInfo.password, salt);
+    const newUser: User = await prisma.user.create({
       data: {
         username: userInfo.username,
         password: userInfo.password,
@@ -42,7 +63,8 @@ router.post("/", async (req: Request, res: Response, next: NextFunction) => {
         lastName: userInfo.lastName,
       },
     });
-    res.send(newUser);
+    console.log(newUser);
+    res.status(201).send(newUser);
   } catch (error) {
     next(error);
   }

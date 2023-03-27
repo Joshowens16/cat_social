@@ -1,0 +1,108 @@
+@font-face {
+  font-family: logo;
+  src: url("../../fonts/IG_LOGO.ttf");
+}
+@font-face {
+  font-family: igSans;
+  src: url("../../fonts/IG_SANS.ttf");
+}
+.signupContainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  overflow-y: hidden;
+  gap: 8px;
+  background-image: url("../../../static/signinblob.svg");
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  font-family: igSans;
+}
+.signupPortal {
+  display: flex;
+  flex-direction: column;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  border: 1px solid black;
+  padding: 20px;
+  border-radius: 1px;
+  border: 1px solid rgb(219, 219, 219);
+}
+.signupPortal p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  font-size: 18px;
+  font-weight: 700;
+  font-family: igSans;
+  margin: px 0 0;
+}
+.signupPortal h1 {
+  font-family: logo !important;
+  user-select: none;
+  padding: 0;
+  margin: 0;
+  font-size: 48px;
+}
+.signupPortal form {
+  font: igSans;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+.signupPortal form input {
+  background-color: rgb(250, 250, 250);
+  padding: 9px 0 7px 8px;
+  text-overflow: ellipsis;
+  border: 1px solid rgb(219, 219, 219);
+  width: 250px;
+}
+.signupPortal form input:focus {
+  outline-style: solid;
+  outline-color: rgb(205, 205, 205);
+  outline-width: 1px;
+}
+.signupPortal form button {
+  background-color: rgba(103, 181, 250, 255);
+  letter-spacing: 0.1px;
+  font-weight: 900;
+  color: white;
+  border: none;
+  padding: 6px;
+  border-radius: 4px;
+}
+.signupPortal form button:hover {
+  outline: solid;
+  outline-width: 1px;
+  outline-color: rgb(219, 219, 219);
+  cursor: pointer;
+}
+.signinAccount {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: igSans;
+  border: 1px solid rgb(219, 219, 219);
+  padding: 10px;
+  width: 312px;
+  gap: 4px;
+}
+.signinAccount p {
+  margin: 0;
+  padding: 0;
+}
+.signinAccount a {
+  color: rgba(103, 181, 250, 255);
+  text-decoration: none;
+}

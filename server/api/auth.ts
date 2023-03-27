@@ -29,7 +29,6 @@ router.post("/", async (req: Request, res: Response, next: NextFunction) => {
       throw new Error("Invalid parameters");
     }
     const data = await authenticate(req.body.username, req.body.password);
-    console.log("post" + data);
     res.send(data);
   } catch (error) {
     next(error);
