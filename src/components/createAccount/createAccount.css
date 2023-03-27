@@ -15,7 +15,7 @@
   height: 100%;
   overflow-y: hidden;
   gap: 8px;
-  background-image: url("../../../static/signinblob.svg");
+  background-image: url("../../../static/test.svg");
   background-repeat: no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -33,6 +33,7 @@
   padding: 20px;
   border-radius: 1px;
   border: 1px solid rgb(219, 219, 219);
+  background-color: white;
 }
 .signupPortal p {
   display: flex;
