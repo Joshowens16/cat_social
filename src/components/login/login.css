@@ -2,6 +2,7 @@
 /* MOBILE-SM: max-width: 768px  */
 /* TABLET max-width: 1024px  */
 /* DESKTOP: min-width: 1200px  */
+
 @font-face {
   font-family: logo;
   src: url("../../fonts/IG_LOGO.ttf");
@@ -19,7 +20,7 @@
   height: 100%;
   overflow-y: hidden;
   gap: 8px;
-  background-image: url("../../../static/signinblob.svg");
+  background-image: url("../../../static/test.svg");
   background-repeat: no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -34,6 +35,7 @@
   padding: 20px;
   border-radius: 1px;
   border: 1px solid rgb(219, 219, 219);
+  background-color: white;
 }
 
 .loginPortal h1 {
@@ -66,7 +68,7 @@
   outline-width: 1px;
 }
 .loginPortal form button {
-  background-color: rgba(103, 181, 250, 255);
+  background-color: var(--rue-green);
   letter-spacing: 0.1px;
   font-weight: 900;
   color: white;
@@ -79,6 +81,9 @@
   outline-width: 1px;
   outline-color: rgb(219, 219, 219);
   cursor: pointer;
+}
+.loginPortal form button:active {
+  background-color: var(--rue-green-light);
 }
 
 .createAccount {
@@ -96,8 +101,11 @@
   padding: 0;
 }
 .createAccount a {
-  color: rgba(103, 181, 250, 255);
+  color: var(--rue-green);
   text-decoration: none;
+}
+.createAccount a:hover {
+  text-decoration: underline;
 }
 
 @media screen and (max-width: 640px) {

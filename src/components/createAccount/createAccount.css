@@ -74,7 +74,7 @@
   outline-width: 1px;
 }
 .signupPortal form button {
-  background-color: rgba(103, 181, 250, 255);
+  background-color: var(--rue-green);
   letter-spacing: 0.1px;
   font-weight: 900;
   color: white;
@@ -98,11 +98,17 @@
   width: 312px;
   gap: 4px;
 }
+.signupPortal form button:active {
+  background-color: var(--rue-green-light);
+}
 .signinAccount p {
   margin: 0;
   padding: 0;
 }
 .signinAccount a {
-  color: rgba(103, 181, 250, 255);
+  color: var(--rue-green);
   text-decoration: none;
+}
+.signinAccount a:hover {
+  text-decoration: underline;
 }
