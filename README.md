@@ -43,6 +43,6 @@
 # Project Process:
 Tier 1: API/DATABASE
 - [x] API can now interact with local and deployed database to create new users
-- [ ]  Authenticate users and hash/encrpt sensitive user information (primarily user password)
+- [x]  Authenticate users and hash/encrpt sensitive user information (primarily user password)
 
 
