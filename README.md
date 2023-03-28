@@ -1,5 +1,5 @@
 # Cat Social
-**A Instgram site for cat owners**
+**An Instgram site for cat owners**
 
 ![Login Page](https://user-images.githubusercontent.com/79232977/228133449-7dbe6e85-8b13-44a6-944f-dffacd04d677.png)
   Cat social is a full stack TypeScript application that uses React on the front-end and Express on the back-end with a PostgreSQL database.
