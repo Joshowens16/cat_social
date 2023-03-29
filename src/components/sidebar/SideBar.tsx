@@ -2,23 +2,32 @@ import React from "react";
 import "./sidebar.css";
 import { AiFillHome, AiOutlineSearch, AiOutlineMessage } from "react-icons/ai";
 import { CgProfile } from "react-icons/cg";
+import { Link } from "react-router-dom";
 
+const linkStyles = {
+  display: "flex",
+  flexDirection: "row" as const,
+  alignItems: "center",
+  gap: "16px",
+  color: "inherit",
+  textDecoration: "none",
+};
 const contents = [
   {
     icon: <AiFillHome />,
-    name: "Home",
+    name: "home",
   },
   {
     icon: <AiOutlineSearch />,
-    name: "Search",
+    name: "search",
   },
   {
     icon: <AiOutlineMessage />,
-    name: "Messages",
+    name: "messages",
   },
   {
     icon: <CgProfile />,
-    name: "Profile",
+    name: "profile",
   },
 ];
 const SideBar = () => {
@@ -30,8 +39,10 @@ const SideBar = () => {
           {contents.map((item) => {
             return (
               <div className="contentItem" key={item.name}>
-                {item.icon}
-                {item.name}
+                <Link to={`/${item.name}`} style={linkStyles}>
+                  <>{item.icon}</>
+                  <>{item.name.charAt(0).toUpperCase() + item.name.slice(1)}</>
+                </Link>
               </div>
             );
           })}
