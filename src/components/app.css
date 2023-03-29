@@ -4,10 +4,17 @@
 }
 
 body,
-html,
-.app {
+html {
   padding: 0;
   margin: 0;
+}
+.app {
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+  margin: 0;
+}
+.logedoutApp {
 }
 @font-face {
   font-family: logo;

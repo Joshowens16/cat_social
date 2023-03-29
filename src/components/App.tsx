@@ -31,10 +31,11 @@ const App = () => {
   }, []);
 
   return (
-    <div className="app">
+    <div className={user.id ? "app" : "loggedoutApp"}>
+      {user.id && <SideBar />}
       <Routes>
         {user.id ? (
-          <Route path="/" element={<Home />} />
+          <Route path={"/"} element={<Home />} />
         ) : (
           <Route path="/" element={<Login />} />
         )}

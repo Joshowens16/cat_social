@@ -40,8 +40,12 @@ const SideBar = () => {
           {contents.map((item) => {
             return (
               <div className="contentItem" key={item.name}>
-                <Link to={`/${item.name}`} style={linkStyles}>
+                <Link
+                  to={`${item.name === "home" ? "/" : "/" + item.name}`}
+                  style={linkStyles}
+                >
                   <>{item.icon}</>
+
                   <>{item.name.charAt(0).toUpperCase() + item.name.slice(1)}</>
                 </Link>
               </div>

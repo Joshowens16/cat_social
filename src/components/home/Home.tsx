@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { resetUser, setUser } from "../../store/userSlice";
 import { RootState } from "../../store";
 import axios from "axios";
+import SideBar from "../sidebar/SideBar";
+import "./home.css";
 const Home = () => {
   const { user } = useSelector((state: RootState) => state.user);
   const dispatch = useDispatch();
@@ -31,7 +33,7 @@ const Home = () => {
     dispatch(resetUser());
   };
   return (
-    <div>
+    <div className="homeContainer">
       <h1>Home</h1>
       <div>
         <p>Welcome {user.username}!!</p>
