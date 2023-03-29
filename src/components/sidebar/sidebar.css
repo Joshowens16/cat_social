@@ -8,12 +8,14 @@
 }
 .sideBarContainer {
   border-right: 1px solid rgb(219, 219, 219);
-  width: 250px;
+  width: 200px;
   height: 100%;
   padding-top: 40px;
   padding-left: 20px;
 }
 .sideBarContents {
+  display: flex;
+  flex-direction: column;
 }
 .sideBarContents h1 {
   width: fit-content;
@@ -22,4 +24,18 @@
   font-family: logo;
   font-weight: 100;
   font-size: 32px;
+}
+.contents {
+  display: flex;
+  flex-direction: column;
+  font-family: igSans;
+  gap: 48px;
+  font-size: 24px;
+  margin-top: 52px;
+}
+.contents .contentItem {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
 }

@@ -39,6 +39,7 @@
     "jsonwebtoken": "^8.5.1",
     "morgan": "^1.10.0",
     "pg": "^8.8.0",
+    "react-icons": "^4.8.0",
     "sequelize": "^6.25.3",
     "style-loader": "^3.3.2",
     "tslint-config-prettier": "^1.18.0",
