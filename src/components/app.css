@@ -2,11 +2,10 @@
   --rue-green: #adb392;
   --rue-green-light: #adb392be;
 }
-body {
-  padding: 0;
-  margin: 0;
-}
-html {
+
+body,
+html,
+.app {
   padding: 0;
   margin: 0;
 }

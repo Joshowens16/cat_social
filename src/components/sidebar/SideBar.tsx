@@ -3,6 +3,7 @@ import "./sidebar.css";
 import { AiFillHome, AiOutlineSearch, AiOutlineMessage } from "react-icons/ai";
 import { CgProfile } from "react-icons/cg";
 import { Link } from "react-router-dom";
+import { GiHamburgerMenu } from "react-icons/gi";
 
 const linkStyles = {
   display: "flex",
@@ -33,8 +34,8 @@ const contents = [
 const SideBar = () => {
   return (
     <div className="sideBarContainer">
+      <h1>Cat Social</h1>
       <div className="sideBarContents">
-        <h1>Cat Social</h1>
         <div className="contents">
           {contents.map((item) => {
             return (
@@ -46,6 +47,10 @@ const SideBar = () => {
               </div>
             );
           })}
+        </div>
+        <div className="hamburgerMenu">
+          <GiHamburgerMenu />
+          More
         </div>
       </div>
     </div>

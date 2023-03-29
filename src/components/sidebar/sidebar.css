@@ -6,24 +6,34 @@
   font-family: igSans;
   src: url("../../fonts/IG_SANS.ttf");
 }
+body,
+html {
+  margin: 0;
+  padding: 0;
+}
 .sideBarContainer {
+  display: flex;
+  flex-direction: column;
   border-right: 1px solid rgb(219, 219, 219);
   width: 200px;
-  height: 100%;
-  padding-top: 40px;
+  height: 100vh;
   padding-left: 20px;
 }
 .sideBarContents {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  height: 100vh !important;
+  font-family: igSans;
 }
-.sideBarContents h1 {
+.sideBarContainer h1 {
   width: fit-content;
   margin: 0;
   padding: 0;
   font-family: logo;
   font-weight: 100;
   font-size: 32px;
+  margin-top: 40px;
 }
 .contents {
   display: flex;
@@ -38,4 +48,13 @@
   flex-direction: row;
   align-items: center;
   gap: 12px;
+}
+.hamburgerMenu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  font-size: 24px;
+  align-self: flex-start;
+  margin-bottom: 24px;
 }

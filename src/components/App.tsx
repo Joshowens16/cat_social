@@ -31,7 +31,7 @@ const App = () => {
   }, []);
 
   return (
-    <>
+    <div className="app">
       <Routes>
         {user.id ? (
           <Route path="/" element={<Home />} />
@@ -41,7 +41,7 @@ const App = () => {
         <Route path="/signup" element={<CreateAccount />} />
         <Route path="/sidebar" element={<SideBar />} />
       </Routes>
-    </>
+    </div>
   );
 };
 
