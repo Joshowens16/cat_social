@@ -8,6 +8,7 @@ import axios from "axios";
 import { RootState } from "../store";
 import "./app.css";
 import CreateAccount from "./createAccount/CreateAccount";
+import SideBar from "./sidebar/SideBar";
 const App = () => {
   const { user } = useSelector((state: RootState) => state.user);
   const dispatch = useDispatch();
@@ -38,6 +39,7 @@ const App = () => {
           <Route path="/" element={<Login />} />
         )}
         <Route path="/signup" element={<CreateAccount />} />
+        <Route path="/sidebar" element={<SideBar />} />
       </Routes>
     </>
   );

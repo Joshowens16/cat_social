@@ -10,5 +10,13 @@ html {
   padding: 0;
   margin: 0;
 }
+@font-face {
+  font-family: logo;
+  src: url("../fonts/IG_LOGO.ttf");
+}
+@font-face {
+  font-family: igSans;
+  src: url("../fonts/IG_SANS.ttf");
+}
 @media screen and (max-width: 700px) {
 }

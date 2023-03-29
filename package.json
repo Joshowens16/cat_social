@@ -21,6 +21,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
+    "@mui/icons-material": "^5.11.11",
+    "@mui/material": "^5.11.15",
     "@prisma/client": "^4.11.0",
     "@reduxjs/toolkit": "^1.9.1",
     "@types/jest": "^29.2.5",

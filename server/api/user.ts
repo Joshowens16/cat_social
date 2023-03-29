@@ -4,6 +4,9 @@ import prisma from "../../prisma/client";
 import { UserInterface } from "./api.types";
 import bcrypt from "bcrypt";
 import { generateSalts } from "../utils";
+import jwt from "jsonwebtoken";
+import * as dotenv from "dotenv";
+dotenv.config();
 // User fields:
 // username: string
 // password: string
@@ -11,6 +14,7 @@ import { generateSalts } from "../utils";
 // firstName: string
 // lastName: string
 const router = express.Router();
+
 router.get("/", async (req: Request, res: Response, next: NextFunction) => {
   try {
     const users = await prisma.user.findMany();
