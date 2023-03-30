@@ -7,12 +7,6 @@ import { generateSalts } from "../utils";
 import jwt from "jsonwebtoken";
 import * as dotenv from "dotenv";
 dotenv.config();
-// User fields:
-// username: string
-// password: string
-// email: string
-// firstName: string
-// lastName: string
 const router = express.Router();
 
 router.get("/", async (req: Request, res: Response, next: NextFunction) => {
