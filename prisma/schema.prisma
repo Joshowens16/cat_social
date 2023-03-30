@@ -11,31 +11,35 @@ datasource db {
 }
 
 model User {
-  id        String      @id @default(cuid())
-  username  String?     @unique
-  password  String
-  email     String      @unique
-  firstName String?
-  lastName  String?
-  posts     Post[]
-  comments  Comments[]
-  cats      Cats[]
-  Followers Followers[]
-  Following Following[]
+  id              String      @id @default(cuid())
+  username        String      @unique
+  password        String
+  email           String      @unique
+  firstName       String?
+  lastName        String?
+  followersNumber Int         @default(0)
+  followingNumber Int         @default(0)
+  posts           Post[]
+  comments        Comments[]
+  cats            Cats[]
+  Followers       Followers[]
+  Following       Following[]
 }
 
 model Followers {
-  id         String  @id @default(cuid())
-  followerId String
-  User       User?   @relation(fields: [userId], references: [id])
-  userId     String?
+  id               String  @id @default(cuid())
+  followerUsername String
+  followerId       String
+  User             User?   @relation(fields: [userId], references: [id])
+  userId           String?
 }
 
 model Following {
-  id         Int     @id @default(autoincrement())
-  followeeId String
-  User       User?   @relation(fields: [userId], references: [id])
-  userId     String?
+  id               Int     @id @default(autoincrement())
+  followeeUsername String
+  followeeId       String
+  User             User?   @relation(fields: [userId], references: [id])
+  userId           String?
 }
 
 model Cats {
