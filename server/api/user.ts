@@ -78,54 +78,85 @@ router.post(
     const { userId } = req.body;
     if (!userId || !followeeId || !followeeUsername)
       throw new Error("Missing required field");
-    const [increaseFollowing, increaseFollowers] = await prisma.$transaction([
-      prisma.user.findUnique({
-        where: {
-          id: userId,
-        },
-      }),
-      prisma.user.findUnique({
-        where: {
-          id: followeeId,
-        },
-      }),
-    ]);
-    await prisma.$transaction([
-      prisma.following.create({
-        data: {
-          followeeUsername: followeeUsername,
-          followeeId: followeeId,
-          userId: userId,
-        },
-      }),
-      prisma.followers.create({
-        data: {
-          followerUsername: increaseFollowing!.username,
-          followerId: increaseFollowing!.id,
-          userId: increaseFollowers!.id,
-        },
-      }),
-    ]);
-    await prisma.$transaction([
-      prisma.user.update({
-        where: {
-          username: increaseFollowing!.username,
-        },
-        data: {
-          followingNumber: (increaseFollowing!.followingNumber += 1),
-        },
-      }),
-      prisma.user.update({
-        where: {
-          username: increaseFollowers!.username,
-        },
-        data: {
-          followersNumber: (increaseFollowers!.followersNumber += 1),
-        },
-      }),
-    ]);
-    res.status(200).send("success!");
+    try {
+      const [increaseFollowing, increaseFollowers] = await prisma.$transaction([
+        prisma.user.findUnique({
+          where: {
+            id: userId,
+          },
+        }),
+        prisma.user.findUnique({
+          where: {
+            id: followeeId,
+          },
+        }),
+      ]);
+      await prisma.$transaction([
+        prisma.following.create({
+          data: {
+            followeeUsername: followeeUsername,
+            followeeId: followeeId,
+            userId: userId,
+          },
+        }),
+        prisma.followers.create({
+          data: {
+            followerUsername: increaseFollowing!.username,
+            followerId: increaseFollowing!.id,
+            userId: increaseFollowers!.id,
+          },
+        }),
+      ]);
+      await prisma.$transaction([
+        prisma.user.update({
+          where: {
+            username: increaseFollowing!.username,
+          },
+          data: {
+            followingNumber: (increaseFollowing!.followingNumber += 1),
+          },
+        }),
+        prisma.user.update({
+          where: {
+            username: increaseFollowers!.username,
+          },
+          data: {
+            followersNumber: (increaseFollowers!.followersNumber += 1),
+          },
+        }),
+      ]);
+      res.status(200).send("success!");
+    } catch (error) {
+      next(error);
+    }
   }
 );
-
+// ROUTE TO UNFOLLOW ANOTHER USER
+router.post(
+  "/follow",
+  async (req: Request, res: Response, next: NextFunction) => {
+    console.log("in route");
+    const { followeeUsername } = req.body;
+    const { followeeId } = req.body;
+    const { userId } = req.body;
+    if (!userId || !followeeId || !followeeUsername)
+      throw new Error("Missing required field");
+    try {
+      const [decreaseFollowing, decreaseFollowers] = await prisma.$transaction([
+        prisma.user.findUnique({
+          where: {
+            id: userId,
+          },
+        }),
+        prisma.user.findUnique({
+          where: {
+            id: followeeId,
+          },
+        }),
+      ]);
+    } catch (error) {
+      next(error);
+    }
+  }
+);
 export default router;
