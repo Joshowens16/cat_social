@@ -133,7 +133,7 @@ router.post(
 );
 // ROUTE TO UNFOLLOW ANOTHER USER
 router.post(
-  "/follow",
+  "/unfollow",
   async (req: Request, res: Response, next: NextFunction) => {
     console.log("in route");
     const { followeeUsername } = req.body;
@@ -154,6 +154,56 @@ router.post(
           },
         }),
       ]);
+      if (!decreaseFollowers || !decreaseFollowing)
+        throw new Error("Not found");
+      const [removeFollower, removeFollowee] = await prisma.$transaction([
+        prisma.followers.findFirst({
+          where: {
+            followerId: decreaseFollowing.id,
+            userId: userId,
+          },
+        }),
+        prisma.following.findFirst({
+          where: {
+            followeeId: userId,
+            userId: decreaseFollowing.id,
+          },
+        }),
+      ]);
+      console.log(removeFollowee, removeFollower);
+      if (!removeFollower || !removeFollowee)
+        throw new Error("User(s) not found!");
+      prisma.$transaction([
+        prisma.followers.delete({
+          where: {
+            id: removeFollower.id,
+          },
+        }),
+        prisma.following.delete({
+          where: {
+            id: removeFollowee.id,
+          },
+        }),
+      ]);
+      await prisma.$transaction([
+        prisma.user.update({
+          where: {
+            username: decreaseFollowing!.username,
+          },
+          data: {
+            followingNumber: (decreaseFollowing!.followingNumber -= 1),
+          },
+        }),
+        prisma.user.update({
+          where: {
+            username: decreaseFollowers!.username,
+          },
+          data: {
+            followersNumber: (decreaseFollowers!.followersNumber -= 1),
+          },
+        }),
+      ]);
+      res.send("unfollowed!");
     } catch (error) {
       next(error);
     }
