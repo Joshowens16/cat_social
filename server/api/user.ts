@@ -156,21 +156,21 @@ router.post(
       ]);
       if (!decreaseFollowers || !decreaseFollowing)
         throw new Error("Not found");
+      console.log(userId, decreaseFollowing.id);
       const [removeFollower, removeFollowee] = await prisma.$transaction([
         prisma.followers.findFirst({
           where: {
-            followerId: decreaseFollowing.id,
-            userId: userId,
+            followerId: userId,
+            userId: decreaseFollowers.id,
           },
         }),
         prisma.following.findFirst({
           where: {
-            followeeId: userId,
-            userId: decreaseFollowing.id,
+            followeeId: decreaseFollowers.id,
+            userId: userId,
           },
         }),
       ]);
-      console.log(removeFollowee, removeFollower);
       if (!removeFollower || !removeFollowee)
         throw new Error("User(s) not found!");
       prisma.$transaction([
