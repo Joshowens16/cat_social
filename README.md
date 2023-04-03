@@ -44,6 +44,12 @@
 # Project Process:
 Tier 1: API/DATABASE
 - [x] API can now interact with local and deployed database to create new users
-- [x]  Authenticate users and hash/encrpt sensitive user information (primarily user password)
+- [x] Authenticate users and hash/encrpt sensitive user information (primarily user password)
+- [x] User can Follow and Unfollower users (in the backend)
 
-
+Current ticket being tackled:
+Users need to be able to post images
+  - For this I will be using an AWS S3 Bucket, which will interact with the psql database.
+Once users can post images, the logic for users seeing other useres posts needs to be tackled.
+  - Initially, this will be tackled chronologically and be paginated in the backend to limit backend stress.
+  
