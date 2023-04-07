@@ -1,0 +1,11 @@
+import { User } from "@prisma/client";
+import express, { NextFunction, Request, Response } from "express";
+import prisma from "../../prisma/client";
+import { UserInterface } from "./api.types";
+import bcrypt from "bcrypt";
+import { generateSalts } from "../utils";
+import jwt from "jsonwebtoken";
+import * as dotenv from "dotenv";
+import { resolve } from "path";
+dotenv.config();
+const router = express.Router();
