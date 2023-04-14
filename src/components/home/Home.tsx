@@ -5,6 +5,7 @@ import { RootState } from "../../store";
 import axios from "axios";
 import SideBar from "../sidebar/SideBar";
 import "./home.css";
+import UploadPost from "../UploadPost";
 const Home = () => {
   const { user } = useSelector((state: RootState) => state.user);
   const dispatch = useDispatch();
@@ -34,11 +35,12 @@ const Home = () => {
   };
   return (
     <div className="homeContainer">
-      <h1>Home</h1>
+      {/* <h1>Home</h1>
       <div>
         <p>Welcome {user.username}!!</p>
         <button onClick={logout}>Logout</button>
-      </div>
+      </div> */}
+      <UploadPost />
     </div>
   );
 };
