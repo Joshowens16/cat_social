@@ -7,7 +7,7 @@ import SideBar from "../sidebar/SideBar";
 import "./home.css";
 import UploadPost from "../UploadPost";
 const Home = () => {
-  const { user } = useSelector((state: RootState) => state.user);
+  const { user } = useSelector((state: RootState) => state);
   const dispatch = useDispatch();
 
   const loginWithToken = async () => {

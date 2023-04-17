@@ -27,7 +27,7 @@ const Login = () => {
           authorization: token,
         },
       });
-
+      console.log(response.data);
       dispatch(setUser(response.data));
     }
   };

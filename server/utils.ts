@@ -24,6 +24,15 @@ export async function findByToken(token: string) {
       where: {
         id: id,
       },
+      select: {
+        id: true,
+        username: true,
+        email: true,
+        firstName: true,
+        lastName: true,
+        followersNumber: true,
+        followingNumber: true,
+      },
     });
     if (user) {
       return user;

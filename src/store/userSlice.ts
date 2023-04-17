@@ -1,19 +1,23 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-interface userType {
+interface initialStateType {
   id: string;
   username: string;
-}
-
-interface initialStateType {
-  user: userType;
+  email: string;
+  firstName: string;
+  lastName: string;
+  followersNumber: string;
+  followingNumber: string;
 }
 
 const initialState: initialStateType = {
-  user: {
-    id: "",
-    username: "",
-  },
+  id: "",
+  username: "",
+  email: "",
+  firstName: "",
+  lastName: "",
+  followersNumber: "",
+  followingNumber: "",
 };
 
 export const userSlice = createSlice({
@@ -21,13 +25,22 @@ export const userSlice = createSlice({
   initialState,
   reducers: {
     setUser: (state, action) => {
-      state.user = action.payload;
+      (state.id = action.payload.id),
+        (state.username = action.payload.username),
+        (state.email = action.payload.email),
+        (state.firstName = action.payload.firstName),
+        (state.lastName = action.payload.lastName),
+        (state.followersNumber = action.payload.followersNumber),
+        (state.followingNumber = action.payload.followingNumber);
     },
     resetUser: (state) => {
-      state.user = {
-        id: "",
-        username: "",
-      };
+      (state.id = ""),
+        (state.username = ""),
+        (state.email = ""),
+        (state.firstName = ""),
+        (state.lastName = ""),
+        (state.followersNumber = ""),
+        (state.followingNumber = "");
     },
   },
 });

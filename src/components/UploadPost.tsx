@@ -2,9 +2,12 @@ import React, { ChangeEvent, useState } from "react";
 import { storage } from "./firebase";
 import { ref, uploadBytes } from "firebase/storage";
 import { v4 } from "uuid";
+import { useSelector } from "react-redux";
+import { RootState } from "../store/index";
 const UploadPost = () => {
   const [post, setPost] = useState(null);
-
+  const username = useSelector((state: RootState) => state.user.username);
+  // console.log(userId);
   const handlePostChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files) return console.log("File not found");
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -26,5 +29,4 @@ const UploadPost = () => {
     </div>
   );
 };
-
 export default UploadPost;

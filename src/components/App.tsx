@@ -10,7 +10,7 @@ import "./app.css";
 import CreateAccount from "./createAccount/CreateAccount";
 import SideBar from "./sidebar/SideBar";
 const App = () => {
-  const { user } = useSelector((state: RootState) => state.user);
+  const { user } = useSelector((state: RootState) => state);
   const dispatch = useDispatch();
 
   const loginWithToken = async () => {
