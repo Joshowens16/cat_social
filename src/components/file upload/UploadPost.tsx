@@ -1,9 +1,10 @@
 import React, { ChangeEvent, useState } from "react";
-import { storage } from "./firebase";
+import { storage } from "../firebase";
 import { ref, uploadBytes } from "firebase/storage";
 import { v4 } from "uuid";
 import { useSelector } from "react-redux";
-import { RootState } from "../store/index";
+import { RootState } from "../../store/index";
+import "./uploadPost.css";
 const UploadPost = () => {
   const [post, setPost] = useState(null);
   const username = useSelector((state: RootState) => state.user.username);
@@ -30,7 +31,15 @@ const UploadPost = () => {
   };
   return (
     <div>
-      <input type="file" accept="image/jpeg" onChange={handlePostChange} />
+      <label htmlFor="myFileUpload" className="custom-file-upload">
+        Choose a file
+      </label>
+      <input
+        type="file"
+        accept="image/jpeg"
+        id="myFileUpload"
+        onChange={handlePostChange}
+      />
       <button onClick={handleImageUpload}>Upload Post</button>
     </div>
   );

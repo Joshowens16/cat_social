@@ -3,9 +3,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { resetUser, setUser } from "../../store/userSlice";
 import { RootState } from "../../store";
 import axios from "axios";
-import SideBar from "../sidebar/SideBar";
 import "./home.css";
-import UploadPost from "../UploadPost";
+import UploadPost from "../file upload/UploadPost";
 const Home = () => {
   const { user } = useSelector((state: RootState) => state);
   const dispatch = useDispatch();
