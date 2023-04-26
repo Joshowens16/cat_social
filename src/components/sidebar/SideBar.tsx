@@ -4,7 +4,7 @@ import { AiFillHome, AiOutlineSearch, AiOutlineMessage } from "react-icons/ai";
 import { CgProfile } from "react-icons/cg";
 import { Link } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
-
+import UploadModal from "../fileUpload/UploadModal";
 const linkStyles = {
   display: "flex",
   flexDirection: "row" as const,
@@ -51,6 +51,7 @@ const SideBar = () => {
               </div>
             );
           })}
+          <UploadModal />
         </div>
         <div className="hamburgerMenu">
           <GiHamburgerMenu />

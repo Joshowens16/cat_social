@@ -4,7 +4,8 @@ import { resetUser, setUser } from "../../store/userSlice";
 import { RootState } from "../../store";
 import axios from "axios";
 import "./home.css";
-import UploadPost from "../file upload/UploadPost";
+import UploadPost from "../fileUpload/UploadPost";
+import Timeline from "../timeline/Timeline";
 const Home = () => {
   const { user } = useSelector((state: RootState) => state);
   const dispatch = useDispatch();
@@ -34,12 +35,8 @@ const Home = () => {
   };
   return (
     <div className="homeContainer">
-      {/* <h1>Home</h1>
-      <div>
-        <p>Welcome {user.username}!!</p>
-        <button onClick={logout}>Logout</button>
-      </div> */}
-      <UploadPost />
+      {/* <UploadPost /> */}
+      <Timeline />
     </div>
   );
 };
