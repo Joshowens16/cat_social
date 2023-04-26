@@ -7,9 +7,9 @@ import { RootState } from "../../store/index";
 import { GrAdd } from "react-icons/gr";
 
 import "./uploadPost.css";
-const UploadPost = () => {
-  const [post, setPost] = useState(null);
-  const [description, setDescription] = useState("");
+const UploadPost: React.FC = () => {
+  const [post, setPost] = useState<any>(null);
+  const [description, setDescription] = useState<any>("");
   const username = useSelector((state: RootState) => state.user.username);
   const userID = useSelector((state: RootState) => state.user.id);
 
@@ -44,10 +44,16 @@ const UploadPost = () => {
     <div className="uploadContainer">
       <h1>Create a new post</h1>
       <label htmlFor="myFileUpload" className="custom-file-upload">
-        <>
-          <GrAdd />
-        </>
-        <p>Upload your photo (JPEG)</p>
+        {!post ? (
+          <>
+            <>
+              <GrAdd />
+            </>
+            <p>Upload your photo (JPEG)</p>
+          </>
+        ) : (
+          post.name
+        )}
       </label>
       <input
         type="file"
