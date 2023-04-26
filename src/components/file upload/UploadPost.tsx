@@ -9,6 +9,7 @@ import { GrAdd } from "react-icons/gr";
 import "./uploadPost.css";
 const UploadPost = () => {
   const [post, setPost] = useState(null);
+  const [description, setDescription] = useState("");
   const username = useSelector((state: RootState) => state.user.username);
   const userID = useSelector((state: RootState) => state.user.id);
 
@@ -24,12 +25,16 @@ const UploadPost = () => {
     // && (e.target.files[0] as any)
     setPost(imageFile);
   };
+  const handleDescChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
+    setDescription(e.target.value);
+  };
   const handleImageUpload = () => {
     if (!post) return;
     const imageRef = ref(storage, `${userID}/${v4()}`);
     uploadBytes(imageRef, post).then(() => {
       alert("Image uploaded");
     });
+    console.log(imageRef);
   };
   return (
     <div className="uploadContainer">
@@ -47,7 +52,11 @@ const UploadPost = () => {
         onChange={handlePostChange}
       />
       <label htmlFor="postDescription">Add your description (optional)</label>
-      <textarea id="postDescription"></textarea>
+      <textarea
+        onChange={handleDescChange}
+        value={description}
+        id="postDescription"
+      ></textarea>
       <button onClick={handleImageUpload}>Upload Post</button>
     </div>
   );

@@ -54,8 +54,8 @@ model Cats {
 
 model Post {
   id        Int        @id @default(autoincrement())
-  content   String?
-  published Boolean    @default(false)
+  imageRef  String?
+  published Boolean    @default(true)
   author    User?      @relation(fields: [authorId], references: [id])
   authorId  String?
   comments  Comments[]

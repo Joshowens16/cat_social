@@ -29,7 +29,9 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 12px;
   font-family: igSans;
+  padding-bottom: 12px;
 }
 .uploadContainer h1 {
   display: flex;
@@ -37,7 +39,10 @@
   align-items: center;
   margin: 0;
   padding: 0;
-  border-bottom: 1px solid black;
+  font-size: 24px;
+  letter-spacing: -1px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.144);
+  padding: 4px;
   width: 100%;
 }
 .uploadModalContainer {
@@ -59,4 +64,13 @@
 .uploadModalContainer button p {
   margin: 0;
   padding: 0;
+}
+
+#postDescription {
+  min-width: 99%;
+  width: 99%;
+  max-width: 99%;
+  max-height: 200px;
+  min-height: 100px;
+  font-family: igSans;
 }
