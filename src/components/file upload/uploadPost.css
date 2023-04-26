@@ -1,0 +1,62 @@
+@font-face {
+  font-family: logo;
+  src: url("../../fonts/IG_LOGO.ttf");
+}
+@font-face {
+  font-family: igSans;
+  src: url("../../fonts/IG_SANS.ttf");
+}
+#myFileUpload {
+  /* Add custom styles here */
+  display: none; /* Hide the default appearance of the file upload */
+}
+
+.custom-file-upload {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid black;
+  aspect-ratio: 1/1;
+  width: 200px;
+  padding: 6px 12px;
+  cursor: pointer;
+  background-color: white;
+  color: #555;
+}
+.uploadContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: igSans;
+}
+.uploadContainer h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid black;
+  width: 100%;
+}
+.uploadModalContainer {
+  font-family: igSans;
+}
+.uploadModalContainer button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background-color: inherit;
+  cursor: pointer;
+  font-size: 24px;
+}
+.uploadModalContainer button p {
+  margin: 0;
+  padding: 0;
+}

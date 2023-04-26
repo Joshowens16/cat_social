@@ -4,19 +4,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import UploadPost from "./UploadPost";
-import { GrAdd } from "react-icons/gr";
-
-const linkStyles = {
-  display: "flex",
-  flexDirection: "row" as const,
-  alignItems: "center",
-  gap: "16px",
-  color: "inherit",
-  textDecoration: "none",
-  border: "none",
-  backgroundColor: "inherit",
-  cursor: "pointer",
-};
+import { GrAddCircle } from "react-icons/gr";
 
 const style = {
   position: "absolute",
@@ -27,6 +15,8 @@ const style = {
   bgcolor: "background.paper",
   boxShadow: 24,
   p: 4,
+  padding: 0,
+  borderRadius: "6px",
 };
 
 export default function BasicModal() {
@@ -35,10 +25,12 @@ export default function BasicModal() {
   const handleClose = () => setOpen(false);
 
   return (
-    <div>
-      <button style={linkStyles} onClick={handleOpen}>
-        <GrAdd />
-        Open modal
+    <div className="uploadModalContainer">
+      <button onClick={handleOpen}>
+        <>
+          <GrAddCircle />
+        </>
+        <p>Upload</p>
       </button>
       <Modal
         open={open}

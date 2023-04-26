@@ -4,7 +4,7 @@ import { resetUser, setUser } from "../../store/userSlice";
 import { RootState } from "../../store";
 import axios from "axios";
 import "./home.css";
-import UploadPost from "../fileUpload/UploadPost";
+import UploadPost from "../file upload/UploadPost";
 import Timeline from "../timeline/Timeline";
 const Home = () => {
   const { user } = useSelector((state: RootState) => state);

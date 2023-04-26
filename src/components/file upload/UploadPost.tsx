@@ -4,6 +4,8 @@ import { ref, uploadBytes } from "firebase/storage";
 import { v4 } from "uuid";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/index";
+import { GrAdd } from "react-icons/gr";
+
 import "./uploadPost.css";
 const UploadPost = () => {
   const [post, setPost] = useState(null);
@@ -30,9 +32,13 @@ const UploadPost = () => {
     });
   };
   return (
-    <div>
+    <div className="uploadContainer">
+      <h1>Create a new post</h1>
       <label htmlFor="myFileUpload" className="custom-file-upload">
-        Choose a file
+        <>
+          <GrAdd />
+        </>
+        <p>Upload your photo (JPEG)</p>
       </label>
       <input
         type="file"
@@ -40,6 +46,8 @@ const UploadPost = () => {
         id="myFileUpload"
         onChange={handlePostChange}
       />
+      <label htmlFor="postDescription">Add your description (optional)</label>
+      <textarea id="postDescription"></textarea>
       <button onClick={handleImageUpload}>Upload Post</button>
     </div>
   );
