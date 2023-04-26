@@ -28,13 +28,17 @@ const UploadPost = () => {
   const handleDescChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     setDescription(e.target.value);
   };
-  const handleImageUpload = () => {
+  const handleImageUpload = async () => {
     if (!post) return;
-    const imageRef = ref(storage, `${userID}/${v4()}`);
+    const imageRef = ref(storage, `${userID}/${v4()}`) as any;
     uploadBytes(imageRef, post).then(() => {
       alert("Image uploaded");
     });
-    console.log(imageRef);
+    // IMAGE REFERENCE FOR DATABASE
+    const imageReference = imageRef._location.path_;
+
+    // DESCRIPTION FOR DATABASE
+    const descriptionDB = description;
   };
   return (
     <div className="uploadContainer">
