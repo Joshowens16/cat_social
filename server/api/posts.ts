@@ -22,11 +22,13 @@ router.post("/", async (req: Request, res: Response, next: NextFunction) => {
   });
   if (!user) res.status(404).send("USER NOT FOUND");
   // CREATE POST
+  console.log("creating post");
   try {
     await prisma.post.create({
       data: {
         imageRef: imageReference,
         authorId: user!.id,
+        description: description,
       },
     });
   } catch (error) {

@@ -7,6 +7,7 @@ import { RootState } from "../../store/index";
 import { GrAdd } from "react-icons/gr";
 
 import "./uploadPost.css";
+import axios from "axios";
 const UploadPost: React.FC = () => {
   const [post, setPost] = useState<any>(null);
   const [description, setDescription] = useState<any>("");
@@ -31,14 +32,24 @@ const UploadPost: React.FC = () => {
   const handleImageUpload = async () => {
     if (!post) return;
     const imageRef = ref(storage, `${userID}/${v4()}`) as any;
-    uploadBytes(imageRef, post).then(() => {
-      alert("Image uploaded");
-    });
+    console.log(imageRef);
+    await uploadBytes(imageRef, post);
     // IMAGE REFERENCE FOR DATABASE
     const imageReference = imageRef._location.path_;
 
     // DESCRIPTION FOR DATABASE
     const descriptionDB = description;
+
+    // USERID for DATABASE is brought in from redux
+    // Creating Body
+    const body = {
+      imageReference: imageReference,
+      userId: userID,
+      description: descriptionDB,
+    };
+    // Hitting API route to create post
+
+    await axios.post("/api/posts", body);
   };
   return (
     <div className="uploadContainer">
