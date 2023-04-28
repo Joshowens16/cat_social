@@ -23,7 +23,7 @@ export default function BasicModal() {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-
+  const [postSuccess, setPostSuccess] = React.useState<boolean>(false);
   return (
     <div className="uploadModalContainer">
       <button onClick={handleOpen}>
@@ -39,7 +39,11 @@ export default function BasicModal() {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <UploadPost />
+          {postSuccess ? (
+            <p>POST SUCCESS!</p>
+          ) : (
+            <UploadPost setPostSuccess={setPostSuccess} />
+          )}
         </Box>
       </Modal>
     </div>

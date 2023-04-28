@@ -8,7 +8,10 @@ import { GrAdd } from "react-icons/gr";
 
 import "./uploadPost.css";
 import axios from "axios";
-const UploadPost: React.FC = () => {
+type UploadPostProps = {
+  setPostSuccess: (value: boolean) => void;
+};
+const UploadPost = (props: UploadPostProps) => {
   const [post, setPost] = useState<any>(null);
   const [description, setDescription] = useState<any>("");
   const username = useSelector((state: RootState) => state.user.username);
@@ -49,7 +52,8 @@ const UploadPost: React.FC = () => {
     };
     // Hitting API route to create post
 
-    await axios.post("/api/posts", body);
+    const response = await axios.post("/api/posts", body);
+    props.setPostSuccess(true);
   };
   return (
     <div className="uploadContainer">
