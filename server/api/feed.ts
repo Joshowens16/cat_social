@@ -23,6 +23,19 @@ router.get("/", async (req: Request, res: Response, next: NextFunction) => {
     followingListId.push(user.followeeId);
   });
   console.log(followingListId);
+  const pageNumber = req.body.pageNumber || 1;
+  const posts = await prisma.post.findMany({
+    where: {
+      authorId: {
+        in: followingListId,
+      },
+    },
+    orderBy: {
+      createdAt: "desc",
+    },
+    take: 10,
+    skip: (pageNumber - 1) * 10,
+  });
   res.send(following);
 });
 

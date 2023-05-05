@@ -61,6 +61,7 @@ model Post {
   authorId    String?
   comments    Comments[]
   likes       Likes[]
+  createdAt   DateTime   @default(now())
 }
 
 model Likes {
