@@ -18,6 +18,11 @@ router.get("/", async (req: Request, res: Response, next: NextFunction) => {
       userId: id,
     },
   });
+  const followingListId: string[] = [];
+  following.map((user) => {
+    followingListId.push(user.followeeId);
+  });
+  console.log(followingListId);
   res.send(following);
 });
 
