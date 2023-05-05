@@ -36,6 +36,11 @@ router.get("/", async (req: Request, res: Response, next: NextFunction) => {
     take: 10,
     skip: (pageNumber - 1) * 10,
   });
+  const imageRefs = [];
+  posts.map((post) => {
+    imageRefs.push(post.imageRef);
+  });
+
   res.send(following);
 });
 
