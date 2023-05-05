@@ -1,10 +1,13 @@
 import prisma from "./client";
-
+import { generateSalts } from "../server/utils";
+import jwt, { JwtPayload, Secret } from "jsonwebtoken";
+import bcrypt from "bcrypt";
 async function main() {
+  const salt: number = await generateSalts();
   const alice = await prisma.user.create({
     data: {
       username: "alice100000",
-      password: "100",
+      password: bcrypt.hashSync("100", salt),
       email: "alice@prisma.com",
       firstName: "Alice",
       lastName: "Jones",
@@ -16,7 +19,7 @@ async function main() {
       firstName: "Bob",
       lastName: "Coleman",
       username: "bobbyc102",
-      password: "123",
+      password: bcrypt.hashSync("100", salt),
     },
   });
   const josh = await prisma.user.create({
@@ -25,7 +28,7 @@ async function main() {
       firstName: "Josh",
       lastName: "Owens",
       username: "jowens3",
-      password: "123",
+      password: bcrypt.hashSync("100", salt),
     },
   });
   const kamryn = await prisma.user.create({
@@ -34,7 +37,7 @@ async function main() {
       firstName: "kamryn",
       lastName: "coleman",
       username: "kcoleman",
-      password: "123",
+      password: bcrypt.hashSync("100", salt),
     },
   });
   const rue = await prisma.user.create({
@@ -43,7 +46,7 @@ async function main() {
       firstName: "Rue",
       lastName: "Appa",
       username: "RACO",
-      password: "123",
+      password: bcrypt.hashSync("100", salt),
     },
   });
 }
