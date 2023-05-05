@@ -6,7 +6,6 @@ import bcrypt from "bcrypt";
 import { autoFollow, generateSalts } from "../utils";
 import jwt from "jsonwebtoken";
 import * as dotenv from "dotenv";
-import { resolve } from "path";
 dotenv.config();
 const router = express.Router();
 // route to get users feed
@@ -36,7 +35,7 @@ router.get("/", async (req: Request, res: Response, next: NextFunction) => {
     take: 10,
     skip: (pageNumber - 1) * 10,
   });
-  const imageRefs = [];
+  const imageRefs: any[] = [];
   posts.map((post) => {
     imageRefs.push(post.imageRef);
   });
