@@ -19,37 +19,33 @@ async function main() {
       password: "123",
     },
   });
-  // await prisma.followers.create({
-  //   data: {
-  //     followerUsername: bob.username,
-  //     followerId: bob.id,
-  //     userId: alice.id,
-  //   },
-  // });
-  // await prisma.user.update({
-  //   where: {
-  //     id: alice.id,
-  //   },
-  //   data: {
-  //     followersNumber: (alice.followersNumber += 1),
-  //   },
-  // });
-  // Test seed to follow someone
-  // await prisma.following.create({
-  //   data: {
-  //     followeeUsername: alice.username,
-  //     followeeId: alice.id,
-  //     userId: bob.id,
-  //   },
-  // });
-  // await prisma.user.update({
-  //   where: {
-  //     id: bob.id,
-  //   },
-  //   data: {
-  //     followingNumber: (bob.followersNumber += 1),
-  //   },
-  // });
+  const josh = await prisma.user.create({
+    data: {
+      email: "josh@email.com",
+      firstName: "Josh",
+      lastName: "Owens",
+      username: "jowens3",
+      password: "123",
+    },
+  });
+  const kamryn = await prisma.user.create({
+    data: {
+      email: "kamryn@email.com",
+      firstName: "kamryn",
+      lastName: "coleman",
+      username: "kcoleman",
+      password: "123",
+    },
+  });
+  const rue = await prisma.user.create({
+    data: {
+      email: "rue@email.com",
+      firstName: "Rue",
+      lastName: "Appa",
+      username: "RACO",
+      password: "123",
+    },
+  });
 }
 main()
   .then(async () => {

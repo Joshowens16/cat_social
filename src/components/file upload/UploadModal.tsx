@@ -20,10 +20,13 @@ const style = {
 };
 
 export default function BasicModal() {
+  const [postSuccess, setPostSuccess] = React.useState<boolean>(false);
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-  const [postSuccess, setPostSuccess] = React.useState<boolean>(false);
+  const handleClose = () => {
+    setOpen(false);
+    setPostSuccess(false);
+  };
   return (
     <div className="uploadModalContainer">
       <button onClick={handleOpen}>

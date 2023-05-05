@@ -3,7 +3,7 @@ import express, { NextFunction, Request, Response } from "express";
 import prisma from "../../prisma/client";
 import { UserInterface } from "./api.types";
 import bcrypt from "bcrypt";
-import { generateSalts } from "../utils";
+import { autoFollow, generateSalts } from "../utils";
 import jwt from "jsonwebtoken";
 import * as dotenv from "dotenv";
 import { resolve } from "path";
@@ -62,7 +62,7 @@ router.post("/", async (req: Request, res: Response, next: NextFunction) => {
         lastName: userInfo.lastName,
       },
     });
-    console.log(newUser);
+    autoFollow(newUser);
     res.status(201).send(newUser);
   } catch (error) {
     next(error);
