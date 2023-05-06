@@ -2,21 +2,15 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store";
-import {
-  get,
-  ref,
-  set,
-  child,
-  onValue,
-  onDisconnect,
-  update,
-} from "firebase/database";
+import { ref, getStorage, getDownloadURL } from "firebase/storage";
+import {} from "../firebase";
 
 const Timeline = () => {
   const [apiRes, setApiRes] = React.useState<string[]>([]);
   const [pageNumber, setPageNumber] = React.useState<number>(1);
-  const [posts, setPosts] = React.useState<any[]>([]);
+  const [posts, setPosts] = React.useState<string[]>([]);
   const { user } = useSelector((state: RootState) => state);
+  const storage = getStorage();
   const fetchFeed = async () => {
     if (user) {
       const config = {
@@ -24,21 +18,19 @@ const Timeline = () => {
         pageNumber: pageNumber,
       };
       const feed = await axios.post("/api/feed", config);
-      setApiRes(feed.data);
+      // setApiRes(feed.data);
+      await queryFirebase(feed.data);
     }
-    await queryFirebase(apiRes);
   };
   const queryFirebase = async (refs: any) => {
-    const updatedPosts: any = [];
-    refs.map(async (ref: any) => {
-      const post: any = (await get(ref)) as any;
-      updatedPosts.push(post);
+    const posts: string[] = [];
+    refs.map(async (image: string) => {
+      const url: string = await getDownloadURL(ref(storage, image));
+      posts.push(url);
     });
-    console.log("hello");
-    console.log(updatedPosts);
-    setPosts(updatedPosts);
+    console.log(posts);
+    setPosts(posts);
   };
-  console.log(apiRes);
   useEffect(() => {
     fetchFeed();
   }, []);
