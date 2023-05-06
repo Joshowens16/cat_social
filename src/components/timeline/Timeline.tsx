@@ -4,43 +4,55 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../store";
 import { ref, getStorage, getDownloadURL } from "firebase/storage";
 import {} from "../firebase";
-
+import "./timeline.css";
 const Timeline = () => {
   const [apiRes, setApiRes] = React.useState<string[]>([]);
   const [pageNumber, setPageNumber] = React.useState<number>(1);
-  const [posts, setPosts] = React.useState<string[]>([]);
+  const [posts, setPosts] = useState<string[]>([]);
   const { user } = useSelector((state: RootState) => state);
   const storage = getStorage();
   const fetchFeed = async () => {
+    const locallyStoredFeed = JSON.parse(localStorage.feed);
+    if (locallyStoredFeed) {
+      setPosts(locallyStoredFeed);
+      return;
+    }
     if (user) {
       const config = {
         user: user,
         pageNumber: pageNumber,
       };
       const feed = await axios.post("/api/feed", config);
-      // setApiRes(feed.data);
+
       await queryFirebase(feed.data);
     }
   };
   const queryFirebase = async (refs: any) => {
     const posts: string[] = [];
-    refs.map(async (image: string) => {
+    const promises = refs.map(async (image: string) => {
       const url: string = await getDownloadURL(ref(storage, image));
-      posts.push(url);
+      return String(url);
     });
-    console.log(posts);
-    setPosts(posts);
+    const urls = await Promise.all(promises);
+    setPosts(urls);
+    localStorage.setItem("feed", JSON.stringify(urls));
   };
   useEffect(() => {
     fetchFeed();
   }, []);
-  if (apiRes.length === 0) return <div>Loading...</div>;
+  if (posts.length === 0) return <div>Loading...</div>;
   return (
-    <div>
-      {/* {apiRes.map((string) => {
-        // eslint-disable-next-line react/jsx-key
-        return <p>{string}</p>;
-      })} */}
+    <div className="timelineContainer">
+      <div className="images">
+        {posts.map((post) => {
+          return (
+            // eslint-disable-next-line react/jsx-key
+            <div>
+              <img src={post} alt="" />
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };
