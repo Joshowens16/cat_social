@@ -12,11 +12,11 @@ const Timeline = () => {
   const { user } = useSelector((state: RootState) => state);
   const storage = getStorage();
   const fetchFeed = async () => {
-    // const locallyStoredFeed = JSON.parse(localStorage.feed);
-    // if (locallyStoredFeed) {
-    //   setPosts(locallyStoredFeed);
-    //   return;
-    // }
+    const locallyStoredFeed = JSON.parse(localStorage.feed);
+    if (locallyStoredFeed) {
+      setPosts(locallyStoredFeed);
+      return;
+    }
     if (user) {
       const config = {
         user: user,
@@ -31,10 +31,13 @@ const Timeline = () => {
     const promises = refs.map(async (image: any) => {
       const url: string = await getDownloadURL(ref(storage, image.imageRef));
       // eventually we want the username, likes and comments on here as well...
-      return { url: url, desc: image.description };
+      return {
+        url: url,
+        desc: image.description,
+        username: image.authorUsername,
+      };
     });
     const urls = await Promise.all(promises);
-    console.log(urls);
     setPosts(urls);
     localStorage.setItem("feed", JSON.stringify(urls));
   };
@@ -44,12 +47,14 @@ const Timeline = () => {
   if (posts.length === 0) return <div>Loading...</div>;
   return (
     <div className="timelineContainer">
-      <div className="images">
+      <div className="posts">
         {posts.map((post) => {
           return (
             // eslint-disable-next-line react/jsx-key
-            <div>
+            <div id="individualPost">
+              <p>{post.username}</p>
               <img src={post.url} alt="" />
+              <p>{post.desc}</p>
             </div>
           );
         })}

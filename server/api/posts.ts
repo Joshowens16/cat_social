@@ -25,7 +25,7 @@ router.post("/", async (req: Request, res: Response, next: NextFunction) => {
       data: {
         imageRef: imageReference,
         authorId: user!.id,
-        authorUsername: user!.username,
+        authorUsername: user!.username || "username",
         description: description,
       },
     });
