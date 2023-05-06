@@ -14,8 +14,7 @@ type UploadPostProps = {
 const UploadPost = (props: UploadPostProps) => {
   const [post, setPost] = useState<any>(null);
   const [description, setDescription] = useState<any>("");
-  const username = useSelector((state: RootState) => state.user.username);
-  const userID = useSelector((state: RootState) => state.user.id);
+  const { user } = useSelector((state: RootState) => state);
 
   // console.log(userId);
   const handlePostChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -34,7 +33,7 @@ const UploadPost = (props: UploadPostProps) => {
   };
   const handleImageUpload = async () => {
     if (!post) return;
-    const imageRef = ref(storage, `${userID}/${v4()}`) as any;
+    const imageRef = ref(storage, `${user.id}/${v4()}`) as any;
     console.log(imageRef);
     await uploadBytes(imageRef, post);
     // IMAGE REFERENCE FOR DATABASE
@@ -47,7 +46,7 @@ const UploadPost = (props: UploadPostProps) => {
     // Creating Body
     const body = {
       imageReference: imageReference,
-      userId: userID,
+      user: user,
       description: descriptionDB,
     };
     // Hitting API route to create post

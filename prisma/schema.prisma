@@ -53,15 +53,16 @@ model Cats {
 }
 
 model Post {
-  id          Int        @id @default(autoincrement())
-  imageRef    String?
-  published   Boolean    @default(true)
-  author      User?      @relation(fields: [authorId], references: [id])
-  description String
-  authorId    String?
-  comments    Comments[]
-  likes       Likes[]
-  createdAt   DateTime   @default(now())
+  id             Int        @id @default(autoincrement())
+  imageRef       String?
+  published      Boolean    @default(true)
+  author         User?      @relation(fields: [authorId], references: [id])
+  description    String
+  authorId       String?
+  authorUsername String?
+  comments       Comments[]
+  likes          Likes[]
+  createdAt      DateTime   @default(now())
 }
 
 model Likes {

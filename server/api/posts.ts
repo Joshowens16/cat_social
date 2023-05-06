@@ -7,19 +7,16 @@ import { generateSalts } from "../utils";
 import jwt from "jsonwebtoken";
 import * as dotenv from "dotenv";
 import { resolve } from "path";
+import { UserType } from "types/types";
 dotenv.config();
 const router = express.Router();
 
 router.post("/", async (req: Request, res: Response, next: NextFunction) => {
   const imageReference: string = req.body.imageReference;
   const description: string = req.body.description;
-  const userID: string = req.body.userId;
-  console.log(imageReference, description, userID);
+  const user: UserType = req.body.user;
+  console.log(imageReference, description, user);
 
-  // Find user to associate the post with:
-  const user = await prisma.user.findUnique({
-    where: { id: userID },
-  });
   if (!user) res.status(404).send("USER NOT FOUND");
   // CREATE POST
   console.log("creating post");
@@ -28,6 +25,7 @@ router.post("/", async (req: Request, res: Response, next: NextFunction) => {
       data: {
         imageRef: imageReference,
         authorId: user!.id,
+        authorUsername: user!.username,
         description: description,
       },
     });

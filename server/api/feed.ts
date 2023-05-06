@@ -37,7 +37,10 @@ router.post("/", async (req: Request, res: Response, next: NextFunction) => {
   });
   const imageRefs: any[] = [];
   posts.map((post) => {
-    imageRefs.push(post.imageRef);
+    console.log(post);
+    if (post.published !== false) {
+      imageRefs.push(post);
+    }
   });
 
   res.send(imageRefs);
