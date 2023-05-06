@@ -9,8 +9,8 @@ import * as dotenv from "dotenv";
 dotenv.config();
 const router = express.Router();
 // route to get users feed
-router.get("/", async (req: Request, res: Response, next: NextFunction) => {
-  const { id } = req.body;
+router.post("/", async (req: Request, res: Response, next: NextFunction) => {
+  const { id } = req.body.user;
   // find all the ID's of the users the user follows
   const following = await prisma.following.findMany({
     where: {
@@ -40,7 +40,7 @@ router.get("/", async (req: Request, res: Response, next: NextFunction) => {
     imageRefs.push(post.imageRef);
   });
 
-  res.send(following);
+  res.send(imageRefs);
 });
 
 export default router;
