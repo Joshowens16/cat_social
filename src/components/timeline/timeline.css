@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgb(223, 223, 223);
+  background-color: rgb(245, 245, 245);
   width: 100vw;
   padding: 8px;
 }
@@ -19,8 +19,9 @@
   justify-content: center;
   align-items: center;
   background-color: white;
-  border-radius: 24px;
+  border-radius: 8px;
   width: fit-content;
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 #individualPost p {
   display: flex;

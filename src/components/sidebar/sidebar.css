@@ -15,7 +15,7 @@ html {
   display: flex;
   flex-direction: column;
   border-right: 1px solid rgb(219, 219, 219);
-  width: 200px;
+  width: 16vw;
   height: 100vh;
   padding-left: 20px;
   position: fixed;

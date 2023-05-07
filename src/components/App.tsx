@@ -9,6 +9,7 @@ import { RootState } from "../store";
 import "./app.css";
 import CreateAccount from "./createAccount/CreateAccount";
 import SideBar from "./sidebar/SideBar";
+import Profile from "./profile/Profile";
 const App = () => {
   const { user } = useSelector((state: RootState) => state);
   const dispatch = useDispatch();
@@ -41,6 +42,7 @@ const App = () => {
         )}
         <Route path="/signup" element={<CreateAccount />} />
         <Route path="/sidebar" element={<SideBar />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
     </div>
   );
