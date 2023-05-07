@@ -3,7 +3,7 @@
   justify-content: center;
   align-items: center;
   background-color: rgb(223, 223, 223);
-  width: 85vw;
+  width: 100vw;
   padding: 8px;
 }
 .posts {
@@ -21,17 +21,25 @@
   background-color: white;
   border-radius: 24px;
   width: fit-content;
-  height: 500px;
 }
 #individualPost p {
   display: flex;
   align-self: flex-start;
   padding: 0;
   margin: 0;
-  margin-left: 8px;
+  /* margin-left: 8px; */
+  padding: 10px;
+  height: 50px;
+}
+#individualPost p:first-child {
+  display: flex;
+  align-items: center;
+  width: 100%;
 }
 #individualPost img {
   object-fit: cover;
   aspect-ratio: 1/1;
   width: 400px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }

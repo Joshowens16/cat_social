@@ -18,6 +18,8 @@ html {
   width: 200px;
   height: 100vh;
   padding-left: 20px;
+  position: fixed;
+  background-color: white;
 }
 .sideBarContents {
   display: flex;

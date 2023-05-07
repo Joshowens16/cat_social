@@ -26,7 +26,6 @@ const Timeline = () => {
     }
   };
   const queryFirebase = async (refs: any) => {
-    const posts: string[] = [];
     const promises = refs.map(async (image: any) => {
       const url: string = await getDownloadURL(ref(storage, image.imageRef));
       // eventually we want the username, likes and comments on here as well...
