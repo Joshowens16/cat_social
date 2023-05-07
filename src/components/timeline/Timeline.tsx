@@ -15,7 +15,6 @@ const Timeline = () => {
     const locallyStoredFeed = JSON.parse(localStorage.feed);
     if (locallyStoredFeed) {
       setPosts(locallyStoredFeed);
-      return;
     }
     if (user) {
       const config = {
@@ -32,6 +31,7 @@ const Timeline = () => {
       const url: string = await getDownloadURL(ref(storage, image.imageRef));
       // eventually we want the username, likes and comments on here as well...
       return {
+        id: image.id,
         url: url,
         desc: image.description,
         username: image.authorUsername,
@@ -51,7 +51,7 @@ const Timeline = () => {
         {posts.map((post) => {
           return (
             // eslint-disable-next-line react/jsx-key
-            <div id="individualPost">
+            <div key={post.id} id="individualPost">
               <p>{post.username}</p>
               <img src={post.url} alt="" />
               <p>{post.desc}</p>
