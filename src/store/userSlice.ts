@@ -4,6 +4,7 @@ interface initialStateType {
   id: string;
   username: string;
   email: string;
+  profilePhoto: string;
   firstName: string;
   lastName: string;
   followersNumber: string;
@@ -16,6 +17,7 @@ const initialState: initialStateType = {
   email: "",
   firstName: "",
   lastName: "",
+  profilePhoto: "",
   followersNumber: "",
   followingNumber: "",
 };
@@ -30,6 +32,7 @@ export const userSlice = createSlice({
         (state.email = action.payload.email),
         (state.firstName = action.payload.firstName),
         (state.lastName = action.payload.lastName),
+        (state.profilePhoto = action.payload.profilePhotoRef),
         (state.followersNumber = action.payload.followersNumber),
         (state.followingNumber = action.payload.followingNumber);
     },
@@ -39,6 +42,7 @@ export const userSlice = createSlice({
         (state.email = ""),
         (state.firstName = ""),
         (state.lastName = ""),
+        (state.profilePhoto = ""),
         (state.followersNumber = ""),
         (state.followingNumber = "");
     },

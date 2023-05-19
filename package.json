@@ -14,8 +14,8 @@
     "test:dev:quiet": "QUIET=true npm run test:dev",
     "seed": "DATABASE_URL=postgresql://josh:passw@localhost:5432/cat_social?schema=public node --experimental-specifier-resolution=node --loader ts-node/esm server/db/seed.ts",
     "seed:dev": "node --experimental-specifier-resolution=node --loader ts-node/esm server/db/seed.ts",
-    "start": "node --experimental-specifier-resolution=node --loader ts-node/esm  server/index.ts --ignore dist/ --ignore src/",
-    "start:dev": "nodemon server/index.ts --ignore dist/ --ignore src/ & npm run build:dev"
+    "start": "NODE_OPTIONS='--no-warnings --loader ts-node/esm' nodemon --watch 'src/**/*' -e ts,tsx --exec ts-node  server/index.ts --ignore dist/ --ignore src/",
+    "start:dev": "NODE_OPTIONS='--no-warnings --loader ts-node/esm' nodemon --watch 'src/**/*' -e ts,tsx --exec ts-node server/index.ts --ignore dist/ --ignore src/ & npm run build:dev"
   },
   "keywords": [],
   "author": "",

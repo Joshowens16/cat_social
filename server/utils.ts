@@ -31,6 +31,7 @@ export async function findByToken(token: string) {
         email: true,
         firstName: true,
         lastName: true,
+        profilePhotoRef: true,
         followersNumber: true,
         followingNumber: true,
       },

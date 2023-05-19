@@ -27,6 +27,7 @@ const Login = () => {
           authorization: token,
         },
       });
+      console.log("login hit");
       console.log(response.data);
       dispatch(setUser(response.data));
     }
@@ -37,7 +38,6 @@ const Login = () => {
     const response = await axios.post("/api/auth", credentials);
     const token = response.data;
     window.localStorage.setItem("token", token);
-
     loginWithToken();
   };
 

@@ -12,11 +12,12 @@ datasource db {
 
 model User {
   id              String      @id @default(cuid())
+  profilePhotoRef String      @default("https://as2.ftcdn.net/v2/jpg/03/31/69/91/1000_F_331699188_lRpvqxO5QRtwOM05gR50ImaaJgBx68vi.jpg")
   username        String      @unique
   password        String
   email           String      @unique
-  firstName       String?
-  lastName        String?
+  firstName       String
+  lastName        String
   followersNumber Int         @default(0)
   followingNumber Int         @default(0)
   posts           Post[]
